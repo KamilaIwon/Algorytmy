@@ -74,4 +74,11 @@ def func9 (liczba):
 print(func9(7))
 
 #zad10
+def func10(tekst):
+    if tekst[::-1] == tekst :
+        return True
+    return False
 
+
+print(func10('kamila'))
+print(func10('kajak'))
