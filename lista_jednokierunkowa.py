@@ -76,7 +76,6 @@ class LinkedList:
 
     # wstawia nowy węzeł tuż za węzłem wskazanym w parametrze
     def insert(self, value: Any, after: Node) -> None:
-
         if after is None:
             return None
         nowy: Node = Node()
@@ -120,8 +119,8 @@ class LinkedList:
         length = 0
         if current is None:
             return 0
-        while current is not None:
-            length = length + 1
+        while current:
+            length += 1
             current = current.next
         return length
 
