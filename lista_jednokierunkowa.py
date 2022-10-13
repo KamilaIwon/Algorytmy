@@ -5,7 +5,7 @@ class Node:
     value: Any
     next: 'Node'
 
-#klasa LinkedList będzie reprezentacją listy jednokierunkowej
+# klasa LinkedList będzie reprezentacją listy jednokierunkowej
 class LinkedList:
     head: Node
     tail: Node
@@ -14,7 +14,7 @@ class LinkedList:
         self.head = None
         self.tail = None
 
-    #umieszcza nowy węzeł na początku listy
+    # umieszcza nowy węzeł na początku listy
     def push(self, value: Any) -> None:
         # tworzy nowy wiezel
         nowy: Node = Node()
@@ -43,7 +43,7 @@ class LinkedList:
             temp = temp.next
         return list
 
-    #umieszcza nowy węzeł na końcu listy
+    # umieszcza nowy węzeł na końcu listy
     def append(self, value: Any) -> None:
         # tworzy nowy wiezel
         nowy: Node = Node()
@@ -59,12 +59,12 @@ class LinkedList:
             self.tail.next = nowy
         self.tail = nowy
 
-    #zwraca węzeł znajdujący się na wskazanej pozycji
+    # zwraca węzeł znajdujący się na wskazanej pozycji
     def node(self, at: int) -> Node:
         # pusta lista
         if self.head is None:
             return None
-        #nowy 
+        #nowy
         current: Node = self.head
         current_temp = 0
         while current_temp < at:
@@ -74,26 +74,27 @@ class LinkedList:
             current_temp += 1
         return current
 
-    #wstawia nowy węzeł tuż za węzłem wskazanym w parametrze
+    # wstawia nowy węzeł tuż za węzłem wskazanym w parametrze
     def insert(self, value: Any, after: Node) -> None:
+
         if after is None:
             return None
-        new: Node = Node()
-        new.value = value
+        nowy: Node = Node()
+        nowy.value = value
         if after == self.tail:
-            after.next = new
-            self.tail = new
-        new.next = after.next
-        after.next = new
+            after.next = nowy
+            self.tail = nowy
+        nowy.next = after.next
+        after.next = nowy
 
-    #usuwa i zwraca pierwszy element listy
+    # usuwa i zwraca pierwszy element listy
     def pop(self) -> Node:
         popped: Node = self.head
         self.head = popped.next
         popped.next = None
         return popped.value
 
-    #usuwa i zwraca ostatni element listy
+    # usuwa i zwraca ostatni element listy
     def remove_last(self) -> Node:
         length = len(self)
         last: Node = self.tail
@@ -105,7 +106,7 @@ class LinkedList:
         self.tail.next = None
         return last.value
 
-    #przyjmuje węzeł jako argument, a następnie usuwa jego następnik
+    # przyjmuje węzeł jako argument, a następnie usuwa jego następnik
     def remove(self, after: Node) -> None:
         if after is None:
             return None
@@ -113,6 +114,7 @@ class LinkedList:
             self.tail = after
             after.next = None
 
+    # podaje długość
     def __len__(self) -> int:
         current = self.head
         length = 0
@@ -143,13 +145,13 @@ assert str(list_) == '0 -> 1 -> 9 -> 10'
 print(list_)
 print(len(list_))
 
-'''
+
 middle_node = list_.node(at=1)
 list_.insert(5, after=middle_node)
 
 assert str(list_) == '0 -> 1 -> 5 -> 9 -> 10'
-# print(list_)
-# print(len(list_))
+print(list_)
+print(len(list_))
 
 first_element = list_.node(at=0)
 returned_first_element = list_.pop()
@@ -168,7 +170,6 @@ list_.remove(second_node)
 assert str(list_) == '1 -> 5'
 
 
-# print(list_.remove_last())
-# print(list_)
-# print(len(list_))
-'''
+print(list_.remove_last())
+print(list_)
+print(len(list_))
