@@ -59,7 +59,7 @@ class LinkedList:
         # jezeli lista jest pusta
         if self.head is None:
             self.head = nowy
-        # wskanik nastepnika ostatniego elementu ustawiamy na nasz nowy wezel
+        # wskaznik nastepnika ostatniego elementu ustawiamy na nasz nowy wezel
         if self.tail:
             self.tail.next = nowy
         # ustawiamy wezel jako ostatni

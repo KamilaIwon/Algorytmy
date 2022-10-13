@@ -14,62 +14,62 @@ class LinkedList:
         self.tail = None
 
     def push(self, value: Any) -> None:
-        new: Node = Node()
-        new.value = value
-        new.next = self.head
+        nowy: Node = Node()
+        nowy.value = value
+        nowy.next = self.head
         if self.tail is None:
-            self.tail = new
-        self.head = new
+            self.tail = nowy
+        self.head = nowy
 
     def append(self, value: Any) -> None:
-        new: Node = Node()
-        new.value = value
-        new.next = None
+        nowy: Node = Node()
+        nowy.value = value
+        nowy.next = None
         if self.head is None:
-            self.head = new
+            self.head = nowy
         if self.tail:
-            self.tail.next = new
-        self.tail = new
+            self.tail.next = nowy
+        self.tail = nowy
 
     def node(self, at: int) -> Node:
         if self.head is None:
             return None
-        current: Node = self.head
-        current_temp = 0
-        while current_temp < at:
-            if current.next is None:
+        tmp: Node = self.head
+        i = 0
+        while i < at:
+            if tmp.next is None:
                 return None
-            current = current.next
-            current_temp += 1
-        return current
+            tmp = tmp.next
+            i += 1
+        return tmp
 
     def insert(self, value: Any, after: Node) -> None:
         if after is None:
             return None
-        new: Node = Node()
-        new.value = value
+        nowy: Node = Node()
+        nowy.value = value
         if after == self.tail:
-            after.next = new
-            self.tail = new
-        new.next = after.next
-        after.next = new
+            after.next = nowy
+            self.tail = nowy
+        nowy.next = after.next
+        after.next = nowy
 
     def pop(self) -> Node:
-        popped: Node = self.head
-        self.head = popped.next
-        popped.next = None
-        return popped.value
+        tmp: Node = self.head
+        self.head = tmp.next
+        tmp.next = None
+        return tmp.value
 
     def remove_last(self) -> Node:
         length = len(self)
-        last: Node = self.tail
+        ostatni: Node = self.tail
         if length <= 1:
             self.tail = None
             self.head = None
-            return last
+            return ostatni
         self.tail = self.node(len(self) - 2)
         self.tail.next = None
-        return last.value
+        return ostatni.value
 
     def remove(self, after: Node) -> None:
         if after is None:
@@ -92,13 +92,13 @@ class LinkedList:
         return list
 
     def __len__(self) -> int:
-        current = self.head
+        tmp = self.head
         length = 0
-        if current is None:
+        if tmp is None:
             return 0
-        while current is not None:
-            length = length + 1
-            current = current.next
+        while tmp is not None:
+            length += 1
+            tmp = tmp.next
         return length
 
 
