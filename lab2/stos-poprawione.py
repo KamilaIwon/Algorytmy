@@ -66,3 +66,18 @@ print("\n")
 print(stack)
 print("\n")
 print(len(stack))
+
+stack.push(11)
+top_value = stack.pop()
+assert top_value == 11
+
+stack.push(12)
+top_value = stack.pop()
+assert top_value == 12
+
+stack.push(13)
+stack.push(14)
+top_value = stack.pop()
+assert top_value == 14
+top_value = stack.pop()
+assert top_value == 13
