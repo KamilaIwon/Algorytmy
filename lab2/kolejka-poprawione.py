@@ -2,6 +2,7 @@ from lista_jednokierunkowa import Node
 from lista_jednokierunkowa import LinkedList
 from typing import Any
 
+#bufor
 class Queue:
     _storage: LinkedList
 
@@ -19,6 +20,10 @@ class Queue:
     #zwróci i usunie pierwszy element w kolejce
     def dequeue(self) -> Any:
         return self._storage.pop()
+
+    # zwróci i usunie ostatni element w kolejce
+    def usun(self) -> Any:
+        return self._storage.remove_last()
 
     def __str__(self) -> str:
         queue = ""
@@ -61,3 +66,18 @@ print(queue.peek())
 print(len(queue))
 
 print(queue)
+
+queue.enqueue(11)
+top_value = queue.usun()
+assert top_value == 11
+
+queue.enqueue(12)
+top_value = queue.usun()
+assert top_value == 12
+
+queue.enqueue(13)
+queue.enqueue(14)
+top_value = queue.usun()
+top_value = queue.usun()
+assert top_value == 13
+
