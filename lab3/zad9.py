@@ -9,4 +9,4 @@ def remove_duplicates(txt: str)-> str:
     return txt[0] + remove_duplicates(txt[1:])
 
 
-print (remove_duplicates('HHHelllo'))
+print (remove_duplicates('KKamillaa'))
