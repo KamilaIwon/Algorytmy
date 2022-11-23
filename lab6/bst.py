@@ -68,7 +68,7 @@ class BinarySearchTree:
         return False
 
     def remove(self, value: Any) -> None:
-        self.root = self._remove(self.root,value)
+        self.root = self._remove(self.root, value)
 
     def _remove(self, node: BinaryNode, value: Any) -> BinaryNode:
         if value == node.value:
@@ -78,6 +78,8 @@ class BinarySearchTree:
                 return node.right_child
             if node.right_child is None:
                 return node.left_child
+        node = node.right_child.min()
+        node.right_child = self._remove(node.right_child, value)
         if value < node.value:
             node.left_child = self._remove(node.left_child,value)
         if value > node.value:
@@ -106,6 +108,7 @@ class BinarySearchTree:
 
 
 
+
 # testy
 
 el_1 = BinaryNode(6)
@@ -114,6 +117,6 @@ drzewo.insert_list([4,7,3,5,2])
 
 print(drzewo.root.left_child.left_child.left_child.value)
 print(drzewo.contains(2))
-drzewo.remove(2)
-print(drzewo.contains(2))
+drzewo.show()
+drzewo.remove(5)
 drzewo.show()
